@@ -1,0 +1,111 @@
+body.route-loading {
+  overflow: hidden;
+}
+
+.route-loader {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.25rem, 4vw, 3.5rem);
+  overflow: hidden;
+  color: #f5f5f7;
+  background: #050506;
+  opacity: 1;
+  transition: opacity 280ms ease;
+}
+
+.route-loader.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.route-loader-top {
+  position: absolute;
+  top: clamp(1.3rem, 5vh, 3rem);
+  right: clamp(1.25rem, 4vw, 3.5rem);
+  left: clamp(1.25rem, 4vw, 3.5rem);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #71717a;
+  font: 400 .65rem/1.4 'Space Mono', ui-monospace, monospace;
+  letter-spacing: .2em;
+}
+
+.route-loader-top span:last-child {
+  color: #38bdf8;
+  text-align: right;
+}
+
+.route-loader-center {
+  width: min(100%, 32rem);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.route-loader-value {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: .16em;
+  min-height: clamp(6.5rem, 18vw, 10rem);
+  font-family: 'Space Mono', ui-monospace, monospace;
+  font-size: clamp(5.5rem, 15vw, 10rem);
+  font-weight: 700;
+  letter-spacing: -.05em;
+  line-height: .95;
+  font-variant-numeric: tabular-nums;
+}
+
+.route-loader-value small {
+  margin: .14em 0 0;
+  color: #38bdf8;
+  font: 700 .26em/1 'Space Mono', ui-monospace, monospace;
+  letter-spacing: 0;
+}
+
+.route-loader-track {
+  width: min(100%, 19rem);
+  height: 1px;
+  margin: 1.35rem auto 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .18);
+}
+
+.route-loader-track span {
+  display: block;
+  height: 100%;
+  background: #f5f5f7;
+  box-shadow: 0 0 12px rgba(56, 189, 248, .65);
+  transition: width 100ms linear;
+}
+
+.route-loader-center p {
+  margin-top: 1rem;
+  color: #71717a;
+  font: 400 .6rem/1.4 'Space Mono', ui-monospace, monospace;
+  letter-spacing: .22em;
+}
+
+@media (max-width: 480px) {
+  .route-loader-top {
+    font-size: .52rem;
+    letter-spacing: .12em;
+  }
+
+  .route-loader-value {
+    min-height: 5.5rem;
+    font-size: clamp(5rem, 22vw, 7rem);
+  }
+
+  .route-loader-track { margin-top: 1.3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-loader,
+  .route-loader-track span {
+    transition: none;
+  }
+}

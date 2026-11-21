@@ -1,0 +1,37 @@
+{
+  "name": "studio-dev-portfolio-mern",
+  "version": "2.0.0",
+  "private": true,
+  "workspaces": ["frontend", "server", "services/portfolio", "services/contact", "services/media"],
+  "scripts": {
+    "dev": "concurrently -k -n web,gateway,portfolio,contact,media \"npm:dev:web\" \"npm:dev:gateway\" \"npm:dev:portfolio\" \"npm:dev:contact\" \"npm:dev:media\"",
+    "dev:web": "vite --config frontend/vite.config.js --host 0.0.0.0",
+    "dev:gateway": "node --watch server/src/server.js",
+    "dev:portfolio": "node --watch services/portfolio/src/server.js",
+    "dev:contact": "node --watch services/contact/src/server.js",
+    "dev:media": "node --watch services/media/src/server.js",
+    "build": "vite build --config frontend/vite.config.js",
+    "start": "concurrently -k -n gateway,portfolio,contact,media \"npm:start:gateway\" \"npm:start:portfolio\" \"npm:start:contact\" \"npm:start:media\"",
+    "start:gateway": "node server/src/server.js",
+    "start:portfolio": "node services/portfolio/src/server.js",
+    "start:contact": "node services/contact/src/server.js",
+    "start:media": "node services/media/src/server.js",
+    "migrate:sqlite": "node scripts/migrate-sqlite.js"
+  },
+  "dependencies": {
+    "cloudinary": "^2.5.1",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "http-proxy-middleware": "^3.0.3",
+    "mongoose": "^8.9.5",
+    "multer": "^2.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite": "^6.0.7"
+  },
+  "engines": { "node": ">=20" }
+}

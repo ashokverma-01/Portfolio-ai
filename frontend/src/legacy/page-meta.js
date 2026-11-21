@@ -1,0 +1,1 @@
+export default { "home": { "title": "AV Software Services", "bodyClass": "" }, "blog": { "title": "BLOG & INSIGHTS — AV SOFTWARE", "bodyClass": "" }, "contact": { "title": "CONTACT & INITIATE PROJECT — AV SOFTWARE", "bodyClass": "" } };
